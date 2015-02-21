@@ -1,2 +1,19 @@
 .panel.radius
   header: h2 {{ global.title }}
+  
+  dl.sub-nav.right
+    dt Filter:
+    dd(ng-repeat="label in skillLabels"
+       ng-class="{'active': currentLabel === label.value}"
+       ng-click="filterClick(label)")
+      a(href="#") {{ label.text }}
+  br
+
+  ul.text-center.small-block-grid-1.medium-block-grid-2.large-block-grid-3
+    li(ng-repeat="skill in skills | filter:searchObj")
+      h3
+        | {{ skill.name }}
+        br
+        small {{ skill.info }}
+      p {{ skill.content }}
+      hr(ng-if="(skills.length - 1) !== $index" class="show-for-small-only")

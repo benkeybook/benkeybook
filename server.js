@@ -1,6 +1,8 @@
 var express = require('express');
 var serveStatic = require('serve-static');
 
+var apiRouter = require('./routers/apiRouter');
+
 var app = express();
 
 app.set('view engine', 'jade');
@@ -19,6 +21,8 @@ app.get('/partials/game-list', function (req, res) {
 app.get('/partials/skill-list', function (req, res) {
   res.render('partials/skill-list');
 });
+
+app.use('/api', apiRouter);
 
 app.use(function (req, res) {
   res.render('layout');

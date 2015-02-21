@@ -1,5 +1,11 @@
-app.controller('SkillListController', ['$scope', function ($scope) {
+app.controller('SkillListController', ['$scope', 'Skill', function ($scope, Skill) {
   var global = $scope.global;
+
+  $scope.searchObj = {
+    label: ''
+  };
+
+  $scope.currentLabel = '';
 
   init();
 
@@ -22,5 +28,38 @@ app.controller('SkillListController', ['$scope', function ($scope) {
         }
       ]
     });
+
+    var skills = Skill.list(function () {
+      $scope.skills = skills;
+    });
+
+    $scope.skillLabels = getLabels();
   }
+
+  function getLabels() {
+    return [
+      {
+        text: 'All',
+        value: ''
+      }, {
+        text: 'HTML',
+        value: 'html'
+      }, {
+        text: 'CSS',
+        value: 'css'
+      }, {
+        text: 'JS',
+        value: 'js'
+      }, {
+        text: 'DB',
+        value: 'db'
+      }
+    ];
+  }
+
+  //=============================================== angular function
+  $scope.filterClick = function (label) {
+    $scope.searchObj.label = label.value;
+    $scope.currentLabel = label.value;
+  };
 }]);
