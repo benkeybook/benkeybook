@@ -2,6 +2,7 @@ var express = require('express');
 var serveStatic = require('serve-static');
 
 var apiRouter = require('./routers/apiRouter');
+var partialsRouter = require('./routers/partialsRouter');
 
 var app = express();
 
@@ -10,17 +11,7 @@ app.set('port', process.env.PORT || 3000)
 
 app.use(serveStatic('public'));
 
-app.get('/partials/home', function (req, res) {
-  res.render('partials/home');
-});
-
-app.get('/partials/game-list', function (req, res) {
-  res.render('partials/game-list');
-});
-
-app.get('/partials/skill-list', function (req, res) {
-  res.render('partials/skill-list');
-});
+app.use('/partials', partialsRouter);
 
 app.use('/api', apiRouter);
 
