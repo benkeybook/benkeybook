@@ -13,4 +13,8 @@ router.get('/skill-list', function (req, res) {
   res.render('partials/skill-list');
 });
 
+router.get('/about', function (req, res) {
+  res.render('partials/about');
+});
+
 module.exports = router;

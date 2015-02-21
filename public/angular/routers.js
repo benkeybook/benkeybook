@@ -12,6 +12,10 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl: '/partials/skill-list',
       controller: 'SkillListController'
     }).
+    when('/about', {
+      templateUrl: '/partials/about',
+      controller: 'AboutController'
+    }).
     otherwise({
       redirectTo: '/'
     });
