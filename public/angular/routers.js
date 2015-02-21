@@ -17,6 +17,7 @@ app.config(['$routeProvider', function ($routeProvider) {
       controller: 'AboutController'
     }).
     otherwise({
-      redirectTo: '/'
+      templateUrl: '/partials/not-found',
+      controller: 'NotFoundController'
     });
 }]);

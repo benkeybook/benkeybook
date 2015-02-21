@@ -17,4 +17,8 @@ router.get('/about', function (req, res) {
   res.render('partials/about');
 });
 
+router.get('/not-found', function (req, res) {
+  res.render('partials/not-found');
+});
+
 module.exports = router;
