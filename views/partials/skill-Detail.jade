@@ -1,0 +1,25 @@
+.panel.radius
+  header
+    h2
+      | {{ global.title }}&nbsp;
+      small {{ skill.name }}
+
+  hr
+
+  table
+    tbody
+      tr
+        th label
+        td
+          span(ng-if="skill.label !== ''") {{ skill.label }}
+          span(ng-if="skill.label === ''") (無)
+      tr
+        th info
+        td
+          span(ng-if="skill.info !== ''") {{ skill.info }}
+          span(ng-if="skill.info === ''") (無)
+      tr
+        th content
+        td
+          span(ng-if="skill.content !== ''") {{ skill.content }}
+          span(ng-if="skill.content === ''") (無)

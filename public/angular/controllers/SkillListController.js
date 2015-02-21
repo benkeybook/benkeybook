@@ -30,7 +30,17 @@ app.controller('SkillListController', ['$scope', 'Skill', function ($scope, Skil
     });
 
     var skills = Skill.list(function () {
-      $scope.skills = skills;
+      var data = jQuery.map( skills, function( item, index ) {
+        return {
+          id: item['_id'],
+          label: item.label,
+          name: item.name,
+          info: item.info,
+          content: item.content
+        };
+      });
+
+      $scope.skills = data;
     });
 
     $scope.skillLabels = getLabels();

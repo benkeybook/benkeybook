@@ -12,6 +12,10 @@ app.config(['$routeProvider', function ($routeProvider) {
       templateUrl: '/partials/skill-list',
       controller: 'SkillListController'
     }).
+    when('/skill/:id', {
+      templateUrl: '/partials/skill-Detail',
+      controller: 'SkillDetailController'
+    }).
     when('/about', {
       templateUrl: '/partials/about',
       controller: 'AboutController'
