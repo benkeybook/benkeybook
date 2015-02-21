@@ -1,0 +1,60 @@
+doctype html
+html(ng-app="app", ng-controller="LayoutController")
+  head
+    meta(chareset="utf-8")
+    meta(name="viewport",
+         content="width=device-width, initial-scale=1.0")
+
+    title(ng-bind="'Benkeybook - '+ global.title") Benkeybook
+
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/normalize.min.css")
+
+    link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.2.0/css/foundation.css")
+
+    link(rel="stylesheet", href="/stylesheets/global.css")
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/js/vendor/modernizr.js")
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/js/vendor/jquery.js")
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.0/angular.min.js")
+    
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.0/angular-route.min.js")
+    
+    //- Angular directives for Foundation
+    script(src="//pineconellc.github.io/angular-foundation/mm-foundation-tpls-0.5.1.js")
+
+    script(src="/angular/app.js")
+
+    script(src="/angular/configure.js")
+
+    script(src="/angular/routers.js")
+
+    script(src="/angular/controllers/LayoutController.js")
+    script(src="/angular/controllers/HomeController.js")
+    script(src="/angular/controllers/GameListController.js")
+    script(src="/angular/controllers/SkillListController.js")
+  body
+    top-bar
+      ul.title-area
+        li.name
+          h1: a(href="/") Benkeybook
+        li.menu-icon(toggle-top-bar): a(href="#") Menu
+      top-bar-section
+        ul.right
+          li: a(href="/") Home
+          li: a(href="/game-list") Games
+          li: a(href="/skill-list") Skills
+
+    .row
+      //- 麵包屑 導覽
+      ul.breadcrumbs
+        li(ng-repeat="datum in global.breadcrumbs",
+           ng-class="{'current': datum.value === global.currentPage}")
+          a(href="{{datum.href}}",
+            ng-bind="datum.text")
+
+      section(ng-view)
+
+    footer.panel.radius.callout
+      p.text-center: samll site design  &copy; #{dateFullYear} The Ben's application.
