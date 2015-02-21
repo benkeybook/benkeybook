@@ -47,10 +47,10 @@ html(ng-app="app", ng-controller="LayoutController")
         li.menu-icon(toggle-top-bar): a(href="#") Menu
       top-bar-section
         ul.right
-          li: a(href="/") Home
-          li: a(href="/game-list") Games
-          li: a(href="/skill-list") Skills
-          li: a(href="/about") About
+          li(ng-class="{'active': global.currentPage === 'home'}"): a(href="/") Home
+          li(ng-class="{'active': global.currentPage === 'game-list'}"): a(href="/game-list") Games
+          li(ng-class="{'active': global.currentPage === 'skill-list'}"): a(href="/skill-list") Skills
+          li(ng-class="{'active': global.currentPage === 'about'}"): a(href="/about") About
 
     .row
       //- 麵包屑 導覽
