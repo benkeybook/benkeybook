@@ -1,2 +1,28 @@
 .panel.radius
-  header: h2 {{ global.title }}
+  header
+    h2
+      | {{ global.title }}
+      br
+      small Record Ben's applications
+    hr
+    .clearfix
+      .left
+        table
+          caption Table of Contents
+          thead
+            tr
+              th(scope="column") Description
+              th(scope="column") Link
+          tbody
+            tr
+              td All games.
+              td: a(href="/game-list", title="前往遊戲區") Go Games
+            tr
+              td All skills in website.
+              td: a(href="/skill-list", title="前往技術區") Go Skills
+        ul.vcard
+          li.fn Mr. Ben
+          li.locality Taichung City
+          li.email: a(href="mailto:benkeybook@gmail.com?subject=Hello&body=Nice to meet you.") benkeybook@gmail.com
+      .right.show-for-medium-up.medium-6
+        img(src="http://placehold.it/500x500")
