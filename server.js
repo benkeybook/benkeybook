@@ -3,7 +3,7 @@ var serveStatic = require('serve-static');
 var mongoose = require('mongoose');
 
 var apiRouter = require('./routers/apiRouter');
-var partialsRouter = require('./routers/partialsRouter');
+var mainRouter = require('./routers/partials/mainRouter');
 
 // 憑據；證書
 var credentials = require('./credentials.js');
@@ -32,17 +32,17 @@ app.set('port', process.env.PORT || 3000);
 
 app.use(serveStatic('public'));
 
-app.use('/partials', partialsRouter);
+app.use('/partials/main', mainRouter);
 
 app.use('/api', apiRouter);
 
 app.use(function (req, res) {
-  res.render('layout');
+  res.render('layout-main');
 });
 
 app.use(function (err, req, res, next) {
   console.log(err.stack);
-  res.render('500');
+  res.render('500-main');
 });
 
 app.listen(app.get('port'), function () {

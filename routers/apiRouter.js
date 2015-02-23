@@ -4,26 +4,36 @@ var Skill = require('../models/skill.js');
 
 var router = express.Router();
 
-router.get('/skills', function (req, res) {
+// 取得技能清單
+router.get('/skills', skillList);
+
+// 取得技能詳細
+router.get('/skill/:id', skillDetail);
+
+module.exports = router;
+
+//=============================================== functions
+
+function skillList(req, res) {
   Skill.find(function (err, skills) {
     if(skills.length) {
       res.json(skills);
       return;
     }
 
-    setSkillData();
+    setSkillData(req, res);
   });
-});
+}
 
-router.get('/skill/:id', function (req, res) {
+function skillDetail(req, res) {
   var id = req.params.id;
 
   Skill.findById(id, 'label name info content', function (err, skill) {
     res.json(skill);
   });
-});
+}
 
-module.exports = router;
+//=============================================== datas
 
 function setSkillData() {
   new Skill({
