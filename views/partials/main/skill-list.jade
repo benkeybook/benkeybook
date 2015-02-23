@@ -1,12 +1,23 @@
 .panel.radius
-  header: h2 {{ global.title }}
   
-  dl.sub-nav.right
-    dt Filter:
-    dd(ng-repeat="label in skillLabels"
-       ng-class="{'active': currentLabel === label.value}"
-       ng-click="filterClick(label)")
-      a(href="#") {{ label.text }}
+  div.clearfix
+    header.left: h2 {{ global.title }}
+
+    div.visible-for-small-only.right
+      a.button.tiny.radius.dropdown(dropdown-toggle="#dropdown-filter") FILTER: {{ currentLabelText }}
+      ul#dropdown-filter.f-dropdown
+        li(ng-repeat="label in skillLabels",
+           ng-click="filterClick(label)")
+          a(href="#") {{ label.text }}
+
+    div.visible-for-medium-up.right
+      dl.sub-nav
+        dt Filter:
+        dd(ng-repeat="label in skillLabels",
+           ng-class="{'active': currentLabel === label.value}",
+           ng-click="filterClick(label)")
+          a(href="#") {{ label.text }}
+  
   br
 
   ul.text-center.small-block-grid-1.medium-block-grid-2.large-block-grid-3

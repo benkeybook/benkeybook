@@ -5,6 +5,8 @@ app.controller('SkillListController', ['$scope', 'Skill', function ($scope, Skil
     label: ''
   };
 
+  $scope.currentLabelText = 'ALL';
+
   $scope.currentLabel = '';
 
   init();
@@ -49,7 +51,7 @@ app.controller('SkillListController', ['$scope', 'Skill', function ($scope, Skil
   function getLabels() {
     return [
       {
-        text: 'All',
+        text: 'ALL',
         value: ''
       }, {
         text: 'HTML',
@@ -71,5 +73,7 @@ app.controller('SkillListController', ['$scope', 'Skill', function ($scope, Skil
   $scope.filterClick = function (label) {
     $scope.searchObj.label = label.value;
     $scope.currentLabel = label.value;
+
+    $scope.currentLabelText = label.text;
   };
 }]);
