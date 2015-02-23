@@ -30,6 +30,8 @@ switch(app.get('env')) {
 app.set('view engine', 'jade');
 app.set('port', process.env.PORT || 3000);
 
+app.locals.dateFullYear = new Date().getFullYear();
+
 app.use(serveStatic('public'));
 
 app.use('/partials/main', mainRouter);
